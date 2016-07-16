@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'byebug'
 class ClearHtml
 
   def self.clear(content)
