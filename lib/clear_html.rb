@@ -50,7 +50,7 @@ class ClearHtml
 
   def self.strip_tag(content, tag)
     html = Nokogiri::HTML(content, nil, 'UTF-8')
-    html.css(tag).each { |t| t.swap(tag.children) }
+    html.css(tag).each { |t| t.swap(t.children) }
     html.to_html
   end
 end
