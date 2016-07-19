@@ -21,6 +21,9 @@ class ClearHtml
   private_class_method
 
   def self.remove_str(html, str)
+    unless html.valid_encoding?
+      html = html.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+    end
     html.gsub(str, '')
   end
 

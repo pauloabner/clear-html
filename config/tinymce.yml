@@ -1,2 +1,10 @@
-toolbar: false
-menubar: false
+default:
+  toolbar: false
+  menubar: false
+
+select_chapter:
+  toolbar:
+    - pagebreak
+  plugins:
+    - pagebreak
+  menubar: 'false'
