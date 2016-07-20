@@ -1,7 +1,7 @@
 [
   {
     "desc": "Remover divisão silábica errada",
-    "find": "/(?<=[a-z])-\s/i",
+    "find": "(?<=[a-zA-Z])-\\s",
     "replace": ""
   }
 ]
