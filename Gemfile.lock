@@ -132,6 +132,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.6)
   byebug
   jquery-rails
+  json
   pg
   rails (= 4.2.7)
   sass-rails (~> 5.0)

@@ -1,0 +1,23 @@
+<div>
+  Total de capítulos: <%= @chapters.count %>
+</div>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% chapter_number = 0 %>
+  <% @chapters.each do |chapter| %>
+  <% chapter_number += 1 %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading<%= chapter_number %>">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= chapter_number %>" aria-expanded="false" aria-controls="collapse<%= chapter_number %>">
+          Capítulo #<%= chapter_number %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%= chapter_number %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= chapter_number %>">
+      <div class="panel-body">
+        <%= chapter.html_safe %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

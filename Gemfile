@@ -18,6 +18,8 @@ gem 'tinymce-rails', '4.4.0'
 
 gem 'bootstrap-sass', '3.3.6'
 
+gem 'json'
+
 group :production do
   gem 'pg'
 end

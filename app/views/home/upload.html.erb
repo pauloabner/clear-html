@@ -1,3 +1,10 @@
-<%= text_area_tag :content, @content, :class => "tinymce", :rows => 40, :cols => 120 %>
+<%= form_tag split_path  do %>
+  <div>
+    <%= text_area_tag :content, @content, :class => "tinymce", :rows => 33 %>
+  </div>
+  <div class="container-btn-group btn-group btn-group-lg pull-right" role="group">
+    <button type="submit" class="btn btn-primary">Próximo</button>
+  </div>
+<% end %>
 
 <%= tinymce :select_chapter %>
