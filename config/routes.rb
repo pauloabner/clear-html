@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/split', to: 'home#split'
 
   get '/regexp', to: 'regexp#show'
+  post '/regexp_update', to: 'regexp#update'
 end

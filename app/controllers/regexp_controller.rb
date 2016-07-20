@@ -1,16 +1,11 @@
 class RegexpController < ApplicationController
   def show
-    @content = file_to_str('public/regexp.txt')
+    @content = (File.read('public/regexp.txt')).to_s
+  rescue
+    @content = 'Um erro aconteceu ao carregar as regexp.'
   end
 
-  private
-
-  def file_to_str(file_path)
-      file = File.open(file_path, 'r')
-      data = ''
-      file.each_line do |line|
-        data += line unless line.empty?
-      end
-      data
-    end
+  def update
+    redirect_to regexp_url
+  end
 end
