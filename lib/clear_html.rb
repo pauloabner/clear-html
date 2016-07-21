@@ -3,7 +3,7 @@ require 'nokogiri'
 class ClearHtml
   def self.clear(content)
     doc = File.open(content) { |f| Nokogiri::HTML(f, nil, 'UTF-8') }
-    html = doc.to_html
+    html = doc.css('body').to_html
     html = remove_str(html, '&nbsp;')
     html = remove_attr(html, 'align')
     html = remove_br_clear_all(html)

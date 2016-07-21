@@ -20,6 +20,8 @@ gem 'bootstrap-sass', '3.3.6'
 
 gem 'json'
 
+gem 'hepub', '0.0.7', :git => 'https://github.com/pauloabner/hepub.git'
+
 group :production do
   gem 'pg'
 end
@@ -27,5 +29,5 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3'
-  gem 'byebug'
+  gem 'byebug', '8.2.4'
 end
