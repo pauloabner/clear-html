@@ -13,5 +13,10 @@
     "desc": "Remover vários \\r.",
     "find": "\r\r",
     "replace": ""
+  },
+  {
+    "desc": "Remover <\\p>\\r<p>",
+    "find": "(?<=\\b)<\/p>\\r<p>",
+    "replace": ""
   }
 ]
