@@ -18,5 +18,10 @@
     "desc": "Remover <\\p>\\r<p>",
     "find": "(?<=\\b)<\/p>\\r<p>",
     "replace": ""
+  },
+  {
+    "desc": "Hifenização errada",
+    "find": "-<\/p><p>-",
+    "replace": "-"
   }
 ]
