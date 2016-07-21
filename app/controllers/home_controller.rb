@@ -1,6 +1,7 @@
 require "#{Rails.root}/lib/clear_html"
 class HomeController < ApplicationController
   def index
+    @regexps = regexp_list
   end
 
   def upload
@@ -23,8 +24,15 @@ class HomeController < ApplicationController
   end
 
   def apply_regexp_library content
-    file = File.read('public/regexp.txt')
-    data_hash = JSON.parse(file)
+    regexp_list.each do |regexp|
+      find = Regexp.new regexp['find']
+      replace = regexp['replace']
+      content.gsub!(find, replace)
+    end
     content
+  end
+
+  def regexp_list
+    JSON.parse(File.read('public/regexp.txt'))
   end
 end
