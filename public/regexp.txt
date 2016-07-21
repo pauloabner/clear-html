@@ -3,5 +3,25 @@
     "desc": "Remover divisão silábica errada",
     "find": "(?<=[a-zA-Z])-\\s",
     "replace": ""
+  },
+  {
+    "desc": "Remover \\n em excesso.",
+    "find": "\n",
+    "replace": ""
+  },
+  {
+    "desc": "Remover vários \\r.",
+    "find": "\r\r",
+    "replace": ""
+  },
+  {
+    "desc": "Remover <\\p>\\r<p>",
+    "find": "(?<=\\b)<\/p>\\r<p>",
+    "replace": ""
+  },
+  {
+    "desc": "Hifenização errada",
+    "find": "-<\/p><p>-",
+    "replace": "-"
   }
 ]
