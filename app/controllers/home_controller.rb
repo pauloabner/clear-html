@@ -17,6 +17,12 @@ class HomeController < ApplicationController
     @chapters = split_content content
   end
 
+  def generate
+    book = Book.new
+    book.chapters_content(params['chapters'])
+    book.exec
+  end
+
   private
 
   def split_content(content)
