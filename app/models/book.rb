@@ -1,9 +1,9 @@
 class Book
-  def initialize
+  def initialize(title, subtitle, autor)
     options = Hash.new
-    options[:title] = 'Título'
-    options[:subtitle] = 'Subtítulo'
-    options[:author] = 'Autor'
+    options[:title] = title
+    options[:subtitle] = subtitle
+    options[:author] = autor
     options[:reference] = 'Referencias'
     options[:cover_path] = 'public/cover.png'
 

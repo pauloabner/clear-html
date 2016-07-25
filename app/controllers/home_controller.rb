@@ -18,9 +18,14 @@ class HomeController < ApplicationController
   end
 
   def generate
-    book = Book.new
+    title = params['titulo']
+    book = Book.new(title, params['subtitulo'], params['autor'])
     book.chapters_content(params['chapters'])
-    book.exec
+    file = book.exec
+    File.open(file, 'r') do |f|
+      send_data f.read.force_encoding('BINARY'), filename: "#{title}.epub", disposition: 'attachment'
+    end
+    File.delete(file)
   end
 
   private
