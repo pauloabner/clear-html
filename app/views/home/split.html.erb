@@ -1,23 +1,48 @@
-<div>
-  Total de capítulos: <%= @chapters.count %>
-</div>
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <% chapter_number = 0 %>
-  <% @chapters.each do |chapter| %>
-  <% chapter_number += 1 %>
+<%= form_tag generate_path  do %>
   <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="heading<%= chapter_number %>">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= chapter_number %>" aria-expanded="false" aria-controls="collapse<%= chapter_number %>">
-          Capítulo #<%= chapter_number %>
-        </a>
-      </h4>
-    </div>
-    <div id="collapse<%= chapter_number %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= chapter_number %>">
-      <div class="panel-body">
-        <%= chapter.html_safe %>
+    <div class="panel-heading">Dados</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <%= text_field_tag 'titulo', nil, placeholder: 'Título', class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <label for="subtitulo">Subtítulo</label>
+        <%= text_field_tag 'subtitulo', nil, placeholder: 'Subtítulo', class: 'form-control', required: true %>
+      </div>
+      <div class="form-group">
+        <label for="autor">Autor</label>
+        <%= text_field_tag 'autor', nil, placeholder: 'Autor', class: 'form-control', required: true %>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Capítulos: (<%= @chapters.count %>)</div>
+    <div class="panel-body">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <% chapter_number = 0 %>
+        <% @chapters.each do |chapter| %>
+        <% chapter_number += 1 %>
+        <%= hidden_field_tag "chapters[]", chapter %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading<%= chapter_number %>">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= chapter_number %>" aria-expanded="false" aria-controls="collapse<%= chapter_number %>">
+                Capítulo #<%= chapter_number %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%= chapter_number %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= chapter_number %>">
+            <div class="panel-body">
+              <%= chapter.html_safe %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="container-btn-group btn-group btn-group-lg pull-right" role="group">
+    <button type="submit" class="btn btn-primary">Próximo</button>
+  </div>
+<% end %>

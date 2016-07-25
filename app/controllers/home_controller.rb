@@ -17,6 +17,17 @@ class HomeController < ApplicationController
     @chapters = split_content content
   end
 
+  def generate
+    title = params['titulo']
+    book = Book.new(title, params['subtitulo'], params['autor'])
+    book.chapters_content(params['chapters'])
+    file = book.exec
+    File.open(file, 'r') do |f|
+      send_data f.read.force_encoding('BINARY'), filename: "#{title}.epub", disposition: 'attachment'
+    end
+    File.delete(file)
+  end
+
   private
 
   def split_content(content)
