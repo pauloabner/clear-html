@@ -6,15 +6,16 @@ class HomeController < ApplicationController
 
   def upload
     file = params['html_file']
-    content = ClearHtml.clear file.path
+    content = ClearHtml.clear_from_file file.path
     content.encode!('UTF-16', 'UTF-8', invalid: :replace, replace: '')
     content.encode!('UTF-8', 'UTF-16')
     @content = apply_regexp_library content
   end
 
   def split
-    content = params['content']
-    @chapters = split_content content
+    content = Nokogiri::HTML(params['content'])
+    content = content.css('body').to_html
+    @chapters = split_content content.gsub('<body>', '').gsub('</body>', '')
   end
 
   def generate

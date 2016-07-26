@@ -18,9 +18,13 @@ gem 'tinymce-rails', '4.4.0'
 
 gem 'bootstrap-sass', '3.3.6'
 
-gem 'json'
+gem 'json', '1.8.3'
 
 gem 'hepub', '0.0.7', :git => 'https://github.com/pauloabner/hepub.git'
+
+gem 'fileutils', '0.7'
+
+gem 'rubyzip', '1.2.0'
 
 group :production do
   gem 'pg'

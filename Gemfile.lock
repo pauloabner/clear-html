@@ -56,6 +56,8 @@ GEM
     concurrent-ruby (1.0.2)
     erubis (2.7.0)
     execjs (2.7.0)
+    fileutils (0.7)
+      rmagick (>= 2.13.1)
     gepub (0.6.9.2)
       nokogiri (~> 1.6.1)
       rubyzip (>= 1.1.1)
@@ -109,6 +111,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.2.2)
+    rmagick (2.15.4)
     rubyzip (1.2.0)
     sass (3.4.22)
     sass-rails (5.0.5)
@@ -144,11 +147,13 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (= 3.3.6)
   byebug (= 8.2.4)
+  fileutils (= 0.7)
   hepub (= 0.0.7)!
   jquery-rails
-  json
+  json (= 1.8.3)
   pg
   rails (= 4.2.7)
+  rubyzip (= 1.2.0)
   sass-rails (~> 5.0)
   sqlite3
   tinymce-rails (= 4.4.0)

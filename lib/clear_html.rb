@@ -1,10 +1,13 @@
 require 'nokogiri'
 #ClearHtml
 class ClearHtml
-  def self.clear(content)
-    doc = File.open(content) { |f| Nokogiri::HTML(f, nil, 'UTF-8') }
+  def self.clear_from_file(file)
+    doc = File.open(file) { |f| Nokogiri::HTML(f, nil, 'UTF-8') }
     html = doc.css('body').to_html
-    html = remove_str(html, '&nbsp;')
+    clear(html)
+  end
+
+  def self.clear(html)
     html = remove_attr(html, 'align')
     html = remove_br_clear_all(html)
     html = remove_attr(html, 'class')
@@ -15,10 +18,10 @@ class ClearHtml
     html = strip_tag(html, 'span')
     html = strip_tag(html, 'div')
     html = remove_empty_p(html)
+    html = change_img_src(html)
+    html = remove_str(html, '&nbsp;')
     html
   end
-
-  private_class_method
 
   def self.remove_str(html, str)
     unless html.valid_encoding?
@@ -54,6 +57,15 @@ class ClearHtml
   def self.strip_tag(content, tag)
     html = Nokogiri::HTML(content, nil, 'UTF-8')
     html.css(tag).each { |t| t.swap(t.children) }
+    html.to_html
+  end
+
+  def self.change_img_src(document)
+    html = Nokogiri::HTML(document, nil, 'UTF-8')
+    html.css('img').each do |img|
+      filename = img['src'].split('/').last
+      img['src'] = "images/#{filename}"
+    end
     html.to_html
   end
 end
