@@ -20,7 +20,8 @@ class HomeController < ApplicationController
 
   def generate
     title = params['titulo']
-    book = Book.new(title, params['subtitulo'], params['autor'])
+    images_zip_file = params['html_file']
+    book = Book.new(title, params['subtitulo'], params['autor'], images_zip_file = images_zip_file.path)
     book.chapters_content(params['chapters'])
     file = book.exec
     File.open(file, 'r') do |f|

@@ -1,4 +1,4 @@
-<%= form_tag generate_path  do %>
+<%= form_tag generate_path, multipart: true do %>
   <div class="panel panel-default">
     <div class="panel-heading">Dados</div>
     <div class="panel-body">
@@ -11,8 +11,16 @@
         <%= text_field_tag 'subtitulo', nil, placeholder: 'Subtítulo', class: 'form-control', required: true %>
       </div>
       <div class="form-group">
-        <label for="autor">Autor</label>
-        <%= text_field_tag 'autor', nil, placeholder: 'Autor', class: 'form-control', required: true %>
+        <div class="col-md-6">
+          <label for="autor">Autor</label>
+          <%= text_field_tag 'autor', nil, placeholder: 'Autor', class: 'form-control', required: true %>
+        </div>
+        <div class="col-md-6">
+          <label class="btn btn-primary">
+              Imagens
+              <%= file_field_tag 'html_file', style: "display:none;" %>
+          </label>
+        </div>
       </div>
     </div>
   </div>
