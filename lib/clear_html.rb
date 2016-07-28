@@ -20,7 +20,7 @@ class ClearHtml
     html = remove_empty_p(html)
     html = change_img_src(html)
     html = remove_str(html, '&nbsp;')
-    html = close_img(html)
+    #html = close_img(html)
     html
   end
 
