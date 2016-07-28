@@ -20,6 +20,7 @@ class ClearHtml
     html = remove_empty_p(html)
     html = change_img_src(html)
     html = remove_str(html, '&nbsp;')
+    html = close_img(html)
     html
   end
 
@@ -67,5 +68,18 @@ class ClearHtml
       img['src'] = "images/#{filename}"
     end
     html.to_html
+  end
+
+  def self.close_img(content)
+    new_str = ''
+    index_img = content.index('<img')
+    until index_img.nil? do
+    	new_str += content[0, index_img + 4]
+    	content = content[index_img + 4, content.length]
+    	index_next_slash = content.index('>')
+    	content = content.sub('>', '/>') unless content[index_next_slash - 1] == '/'
+    	index_img = content.index('<img')
+    end
+    new_str + content
   end
 end

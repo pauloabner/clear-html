@@ -18,9 +18,10 @@ class Book
   def chapters_content(content)
     content.each do |chapter_content|
       section = Array.new
+      chapter_content = ClearHtml.close_img(chapter_content)
       chapter_content.encode!('UTF-16', 'UTF-8', invalid: :replace, replace: '')
       chapter_content.encode!('UTF-8', 'UTF-16')
-      section.push({ :title => '', :content => chapter_content })
+      section.push({ :title => '', :content => chapter_content.html_safe })
       @book.add_chapter('Titulo Capítulo', '', section)
     end
   end
